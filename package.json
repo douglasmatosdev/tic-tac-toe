@@ -1,0 +1,16 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Tic-Tac-Toe Game - implemented in JavaScript Vanilla",
+  "main": "index.js",
+  "author": "Douglas Matos da Silva",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "node live-server.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "live-server": "^1.2.2"
+  }
+}
