@@ -12,10 +12,11 @@ body,
 :root {
     --bs1px: solid 1px;
     --border-cross-color: solid 2px gray;
+    --bg-win-line: #222;
 }
 
 body {
-    background-color: lightblue;
+    background-color: lightvar(--bg-win-line);
 }
 
 #root {
@@ -30,7 +31,6 @@ body {
 #root h1 {
     font-size: 3rem;
     font-family: cursive;
-    margin-bottom: 2rem;
 }
 
 .board {
@@ -41,6 +41,74 @@ body {
     max-height: 40rem;
     display: none;
     grid-template-columns: repeat(3, 1fr);
+    position: relative;
+}
+
+.board.win-start::before {
+    content: '';
+    position: absolute;
+    top: calc(16.5% - 5px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 10px;
+    background-color: var(--bg-win-line);
+}
+.board.win-center::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 5px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 10px;
+    background-color: var(--bg-win-line);
+}
+.board.win-end::before {
+    content: '';
+    position: absolute;
+    top: calc(83.16% - 5px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 10px;
+    background-color: var(--bg-win-line);
+}
+.board.win-diagonal-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: calc(100% * 1.41);
+    height: 10px;
+    background-color: var(--bg-win-line);
+
+    transform-origin: 0px 0px;
+    transform: rotate(45deg);
+}
+.board.win-diagonal-2::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: calc(100% * 1.41);
+    height: 10px;
+    background-color: var(--bg-win-line);
+
+    transform-origin: 0px 0px;
+    transform: rotate(-45deg);
 }
 
 .board.playing-started {
@@ -140,7 +208,7 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     display: none;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .winner.game-over {
@@ -155,6 +223,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-height: 150px;
 }
 
 .winner .winner-inner div button {

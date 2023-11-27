@@ -42,8 +42,26 @@ function checkWinner(player) {
         const hasWinnerInDiagonal = board_state.every((bs, idx) => bs[idx] === player || bs[(bs.length-1) - idx] === player);
 
         if (hasWinnerInRow || hasWinnerInColumn || hasWinnerInDiagonal) {
+            if (hasWinnerInRow) {
+                if (indexItem === 0) {
+                    board.classList.add("win-start");
+                } else if (indexItem === 1) {
+                    board.classList.add("win-center");
+                } else {
+                    board.classList.add("win-end");
+                }
+                
+            }
+
+            if (hasWinnerInDiagonal) {
+                if (board_state[0][0] === player && board_state[1][1] === player && board_state[2][2] === player) {
+                    board.classList.add("win-diagonal-1");
+                } else {
+                    board.classList.add("win-diagonal-2");
+                }
+            }
+
             gameOver();
-            
         }
 
         if (!hasWinnerInRow && !hasWinnerInColumn && !hasWinnerInDiagonal && board_state.every(e => e.every(e => e.length))) {
